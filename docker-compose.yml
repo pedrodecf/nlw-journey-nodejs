@@ -1,0 +1,11 @@
+services:
+  nlw-node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nlw-node
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
