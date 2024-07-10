@@ -59,6 +59,7 @@ export async function createTrip(app: FastifyInstance) {
 
       return {
         tripId: trip.id,
+        message: 'Trip created! 🎉🎉🎉',
       }
     },
   )

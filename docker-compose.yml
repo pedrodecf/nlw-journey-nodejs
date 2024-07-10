@@ -4,17 +4,16 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: nlw-node
-    ports:
-      - "3000:3000"
-    depends_on:
-      - nlw-db
-    networks:
-      - nlw-network
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules
-    entrypoint: ["dockerize", "-wait", "tcp://nlw-db:5432", "-timeout", "20s"]
-    command: sh -c "npx prisma migrate dev && nodemon --watch . --ext js,ts,json --exec npm run dev"
+    ports:
+      - "3000:3000"
+    networks:
+      - nlw-network
+    depends_on:
+      - nlw-db
+    entrypoint: dockerize -wait tcp://nlw-db:5432 -timeout 20s docker-entrypoint.sh
+    command: sh -c "npm install && npx prisma migrate dev && npm run dev"
 
   nlw-db:
     image: bitnami/postgresql:latest
