@@ -7,6 +7,8 @@ import {
 import { confirmParticipant } from './routes/confirm-participant'
 import { confirmTrip } from './routes/confirm-trip'
 import { createTrip } from './routes/create-trip'
+import { createActivity } from './routes/create-activity'
+import { getActivities } from './routes/get-activities'
 
 const app = fastify()
 
@@ -20,6 +22,8 @@ app.register(cors, {
 app.register(createTrip)
 app.register(confirmTrip)
 app.register(confirmParticipant)
+app.register(createActivity)
+app.register(getActivities)
 
 app.listen({ port: 3000, host: '0.0.0.0' }).then(() => {
   console.log('Server running on port 3000 🚀')
