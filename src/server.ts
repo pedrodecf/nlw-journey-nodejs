@@ -1,11 +1,12 @@
+import cors from '@fastify/cors'
 import fastify from 'fastify'
-import { createTrip } from './routes/create-trip'
 import {
   serializerCompiler,
   validatorCompiler,
 } from 'fastify-type-provider-zod'
+import { confirmParticipant } from './routes/confirm-participant'
 import { confirmTrip } from './routes/confirm-trip'
-import cors from '@fastify/cors'
+import { createTrip } from './routes/create-trip'
 
 const app = fastify()
 
@@ -18,6 +19,7 @@ app.register(cors, {
 
 app.register(createTrip)
 app.register(confirmTrip)
+app.register(confirmParticipant)
 
 app.listen({ port: 3000, host: '0.0.0.0' }).then(() => {
   console.log('Server running on port 3000 🚀')
