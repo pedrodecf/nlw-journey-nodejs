@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server.ts",
   "scripts": {
-    "dev": "nodemon --watch . --ext js,ts,json --exec tsx watch src/server.ts"
+    "dev": "nodemon --watch . --ext js,ts,json --exec tsx watch --env-file .env src/server.ts"
   },
   "keywords": [],
   "author": "",

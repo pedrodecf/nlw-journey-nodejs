@@ -17,6 +17,7 @@ import { updateTrip } from './routes/update-trip'
 import { getTripDetails } from './routes/get-trip-details'
 import { getParticipant } from './routes/get-participant'
 import { errorHandler } from './error-handler'
+import { env } from './env'
 
 const app = fastify()
 
@@ -42,6 +43,6 @@ app.register(updateTrip)
 app.register(getTripDetails)
 app.register(getParticipant)
 
-app.listen({ port: 3000, host: '0.0.0.0' }).then(() => {
-  console.log('Server running on port 3000 🚀')
+app.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
+  console.log(`Server running on port ${env.PORT} 🚀`)
 })
